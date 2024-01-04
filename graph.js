@@ -101,7 +101,30 @@ class Graph {
 
 
   /** find the distance of the shortest path from the start node to the end node */
-  distanceOfShortestPath(start, end) { }
+  distanceOfShortestPath(start, end) {
+    let toVisitQueue = [start];
+    let seen = new Set(toVisitQueue);
+    let shortestDistance = 0;
+
+    if(start === end) return 0;
+
+    debugger;
+    while(toVisitQueue.length>0){
+      let current = toVisitQueue.shift();
+
+      for(let neighbour of current.adjacent){
+        debugger;
+        if(neighbour === end) return shortestDistance;
+        debugger;
+        if(!seen.has(neighbour)){
+          toVisitQueue.push(neighbour);
+          seen.add(neighbour);
+        
+        }
+      }
+      shortestDistance++
+    }
+   }
 }
 
 module.exports = { Graph, Node };
